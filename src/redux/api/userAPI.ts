@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import axios from "axios";
 import {
   AllUsersResponse,
   DeleteUserRequest,
@@ -6,7 +7,6 @@ import {
   UserResponse,
 } from "../../types/api-types";
 import { User } from "../../types/types";
-import axios from "axios";
 
 export const userAPI = createApi({
   reducerPath: "userApi",
@@ -23,6 +23,7 @@ export const userAPI = createApi({
       }),
       invalidatesTags: ["users"],
     }),
+
     deleteUser: builder.mutation<MessageResponse, DeleteUserRequest>({
       query: ({ userId, adminUserId }) => ({
         url: `${userId}?id=${adminUserId}`,
@@ -46,7 +47,7 @@ export const getUser = async (id: string) => {
 
     return data;
   } catch (error) {
-    return error;
+    throw error;
   }
 };
 
