@@ -46,8 +46,13 @@ export const getUser = async (id: string) => {
     );
 
     return data;
-  } catch (error) {
-    throw error;
+  } catch (err) {
+    // 👈️ err is unknown
+    if (typeof err === "object" && err !== null) {
+      return err.toString();
+    } else {
+      console.log("Unexpected error", err);
+    }
   }
 };
 
