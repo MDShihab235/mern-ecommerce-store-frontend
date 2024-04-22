@@ -68,7 +68,7 @@ const PieCharts = () => {
               <div>
                 <DoughnutChart
                   labels={["In Stock", "Out Of Stock"]}
-                  data={[stock.inStock, stock.outOfStock]}
+                  data={[stock?.inStock, stock?.outOfStock]}
                   backgroundColor={["hsl(269,80%,40%)", "rgb(53, 162, 255)"]}
                   legends={false}
                   offset={[0, 80]}
