@@ -9,7 +9,7 @@ type CartItemProps = {
   decrementHandler: (cartItem: CartItem) => void;
   removeHandler: (id: string) => void;
 };
-const CartItem = ({
+const CartItems = ({
   cartItem,
   incrementHandler,
   decrementHandler,
@@ -35,4 +35,4 @@ const CartItem = ({
   );
 };
 
-export default CartItem;
+export default CartItems;
