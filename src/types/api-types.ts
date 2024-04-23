@@ -30,7 +30,7 @@ export type AllUsersResponse = {
 
 export type UserResponse = {
   success: boolean;
-  user: User;
+  user: User | string;
 };
 
 export type AllProductsResponse = {
