@@ -10,6 +10,7 @@ import { auth } from "./firebase";
 import { getUser } from "./redux/api/userAPI";
 import { userExist, userNotExist } from "./redux/reducer/userReducer";
 import { RootState } from "./redux/store";
+import { User } from "./types/types";
 
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
@@ -46,11 +47,14 @@ const App = () => {
   );
 
   const dispatch = useDispatch();
-
+  type Users = {
+    user: User;
+  };
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const data = await getUser(user.uid);
+        const data: Users = (await getUser(user.uid)) as Users;
+        console.log(data);
         dispatch(userExist(data?.user));
       } else dispatch(userNotExist());
     });
